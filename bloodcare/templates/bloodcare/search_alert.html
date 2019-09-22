@@ -1,0 +1,42 @@
+{% extends "bloodcare/base.html" %}
+{% load render_table from django_tables2 %}
+{% block content %}
+
+<div class='container' style='min-height:100px;'></div>
+
+<div class='container' style='height:100vh;'>
+
+    <div class='row align-items-center justify-content-center'>
+        <div class='mt-5 col-sm-10 col-md-10 col-lg-10 col-xl-10'>
+
+            <form method='POST'>
+                {% csrf_token %}
+                <select name='blood_type'>
+                    <option value="a_positive">A+</option>
+                    <option value="a_negative">A-</option>
+                    <option value="b_positive">B+</option>
+                    <option value="b_negative">B-</option>
+                    <option value="o_positive">O+</option>
+                    <option value="o_negative">O-</option>
+                    <option value="ab_positive">AB+</option>
+                    <option value="ab_negative">AB-</option>
+                </select>&nbsp&nbsp&nbsp&nbsp
+                <button type='submit' name='search' value='search' class='btn_1'>Search</button>
+                <button type='submit' name='notify' value='notify' class='btn_1'>Notify Users</button>
+            </form>
+
+        </div>
+    </div>
+{% if status == False %}
+    <div class='row align-items-center justify-content-center'>
+        <div class='mt-5 col-sm-10 col-md-10 col-lg-10 col-xl-10'>
+
+            {% render_table table %}
+
+        </div>
+    </div>
+{% endif %}
+</div>
+
+
+{% endblock content %}

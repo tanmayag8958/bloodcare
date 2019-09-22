@@ -1,0 +1,24 @@
+{% extends "bloodcare/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class='container' style='min-height:100px;'></div>
+
+<div class="container" style="height:100vh;">
+    <div class='row align-items-center justify-content-center' style="height:75vh;">
+        <div class='mt-5 col-sm-11 col-md-6 col-lg-6 col-xl-6'>
+            <form method='POST'>
+                <fieldset class='form-group'>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                </fieldset>
+                <button class='btn btn-primary' type='submit'>Login</button>
+                <small class="text-muted ml-2">
+                    <a class="ml-2" href="{% url 'password_reset' %}">Forgot password</a>
+                </small>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

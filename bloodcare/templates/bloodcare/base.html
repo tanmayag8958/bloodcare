@@ -1,0 +1,204 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    {% if title %}
+    <title>BLOODCARE - {{ title }}</title>
+    {% else %}
+    <title>BLOODCARE</title>
+    {% endif %}
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{% static 'bloodcare/img/favicon.png' %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'bloodcare/css/bootstrap.min.css' %}">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="{% static 'bloodcare/css/animate.css' %}">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="{% static 'bloodcare/css/owl.carousel.min.css' %}">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="{% static 'bloodcare/css/themify-icons.css' %}">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="{% static 'bloodcare/css/flaticon.css' %}">
+    <!-- magnific popup CSS -->
+    <link rel="stylesheet" href="{% static 'bloodcare/css/magnific-popup.css' %}">
+    <!-- nice select CSS -->
+    <link rel="stylesheet" href="{% static 'bloodcare/css/nice-select.css' %}">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="{% static 'bloodcare/css/slick.css' %}">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="{% static 'bloodcare/css/style.css' %}">
+</head>
+
+<body>
+    <!--::header part start::-->
+    <header class="main_menu home_menu">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="{% url 'home' %}"> <img src="{% static 'bloodcare/img/logo.png' %}" alt="logo"> </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse main-menu-item justify-content-end"
+                            id="navbarSupportedContent">
+                            <ul class="navbar-nav align-items-center">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'home' %}">about</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'home' %}">Contact</a>
+                                </li>
+
+
+                                {% if user.is_authenticated %}
+                                <li class="d-none d-lg-block">
+                                    <a class="btn_1" href="{% url 'dashboard' %}">{{ request.user.username }}</a>
+                                </li>
+                                <li class="d-none d-lg-block">
+                                    <a class="btn_1" href="{% url 'logout' %}">Logout</a>
+                                </li>
+                                {% else %}
+                                <li class="d-none d-lg-block">
+                                    <a class="btn_1" href="{% url 'login' %}">Login</a>
+                                </li>
+                                {% endif %}
+
+
+                                
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header part end-->
+
+
+    {% block content %} {% endblock %}
+
+
+
+    <!-- footer part start-->
+    <footer class="footer-area">
+        <div class="footer section_padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-sm-4 mb-4 mb-xl-0 single-footer-widget">
+                        <h4>Services Link</h4>
+                        <ul>
+                            <li><a href="#">Eye treatment</a></li>
+                            <li><a href="#">Skin Surgery</a></li>
+                            <li><a href="#">Diagnosis clinic</a></li>
+                            <li><a href="#"> Dental care</a></li>
+                            <li><a href="#">Neurology service</a></li>
+                            <li><a href="#">Plastic surgery</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4 col-sm-4 mb-4 mb-xl-0 single-footer-widget">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'home' %}">About Us</a></li>
+                            <li><a href="{% url 'user_register' %}">User Register</a></li>
+                            <li><a href="{% url 'hospital_register' %}">Hospital Register</a></li>
+                            <li><a href="{% url 'bank_register' %}">Blood Bank Register</a></li>
+                        </ul>
+                    </div>
+    
+                    <!-- <div class="col-xl-2 col-sm-4 mb-4 mb-xl-0 single-footer-widget">
+                        <h4>Explore</h4>
+                        <ul>
+                            <li><a href="#">In the community</a></li>
+                            <li><a href="#">IU health foundation</a></li>
+                            <li><a href="#">Family support </a></li>
+                            <li><a href="#">Business solution</a></li>
+                            <li><a href="#">Community clinic</a></li>
+                        </ul>
+                    </div> -->
+                    <!-- <div class="col-xl-2 col-sm-4 mb-4 mb-xl-0 single-footer-widget">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Lights were season</a></li>
+                            <li><a href="#"> Their is let wherein</a></li>
+                            <li><a href="#">which given over</a></li>
+                            <li><a href="#">Without given She</a></li>
+                            <li><a href="#">Isn two signs think</a></li>
+                        </ul>
+                    </div> -->
+                    <div class="col-xl-4 col-sm-8 col-md-8 mb-4 mb-xl-0 single-footer-widget">
+                        <h4>Newsletter</h4>
+                        <p>Seed good winged wherein which night multiply
+                            midst does not fruitful</p>
+                        <div class="form-wrap" id="mc_embed_signup">
+                            <form target="_blank"
+                                action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                method="get" class="form-inline">
+                                <input class="form-control" name="EMAIL" placeholder="Your Email Address"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '"
+                                    required="" type="email">
+                                <button class="click-btn btn btn-default text-uppercase">subscribe</button>
+                                <div style="position: absolute; left: -5000px;">
+                                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                                </div>
+    
+                                <div class="info"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- footer part end-->
+    
+    <!-- jquery plugins here-->
+    
+    <script src="{% static 'bloodcare/js/jquery-1.12.1.min.js' %}"></script>
+    <!-- popper js -->
+    <script src="{% static 'bloodcare/js/popper.min.js' %}"></script>
+    <!-- bootstrap js -->
+    <script src="{% static 'bloodcare/js/bootstrap.min.js' %}"></script>
+    <!-- easing js -->
+    <script src="{% static 'bloodcare/js/jquery.magnific-popup.js' %}"></script>
+    <!-- swiper js -->
+    <script src="{% static 'bloodcare/js/swiper.min.js' %}"></script>
+    <!-- swiper js -->
+    <script src="{% static 'bloodcare/js/masonry.pkgd.js' %}"></script>
+    <!-- particles js -->
+    <script src="{% static 'bloodcare/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'bloodcare/js/jquery.nice-select.min.js' %}"></script>
+    <!-- swiper js -->
+    <script src="{% static 'bloodcare/js/slick.min.js' %}"></script>
+    <script src="{% static 'bloodcare/js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'bloodcare/js/waypoints.min.js' %}"></script>
+    <!-- contact js -->
+    <script src="{% static 'bloodcare/js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'bloodcare/js/jquery.form.js' %}"></script>
+    <script src="{% static 'bloodcare/js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'bloodcare/js/mail-script.js' %}"></script>
+    <script src="{% static 'bloodcare/js/contact.js' %}"></script>
+    <!-- custom js -->
+    <script src="{% static 'bloodcare/js/custom.js' %}"></script>
+    </body>
+    
+    </html>

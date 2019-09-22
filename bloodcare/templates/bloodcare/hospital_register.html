@@ -1,0 +1,23 @@
+{% extends "bloodcare/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class='container' style='min-height:100px;'></div>
+
+<div class="container" style='min-height:1400px;'>
+    <div class='row align-items-center justify-content-center'>
+        <div class='mt-5 col-sm-11 col-md-6 col-lg-6 col-xl-6'>
+            <form method='POST'>
+                <fieldset class='form-group'>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    {{ address_form|crispy }}
+                    {{ hospital_details_form|crispy }}
+                </fieldset>
+                <button class='btn btn-primary' type='submit'>Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
